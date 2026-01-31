@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>clicker</title>
+<style>
+	#clicks{
+		background-color: blue ;
+		margin-top: 50%;
+		margin-bottom: 50%;
+	}
+	#valclicks {
+		color: white;
+	}
+</style>
+
+</head>
+
+	
+<body>
+    <div style="text-align: center;" id="clicks">
+        <button onclick="verificarClicks()" id="button">Click here</button>
+        <div id="valclicks">Your Clicks: 0</div>
+        
+        <script>
+            let totalClicks = 0;  // Variável GLOBAL pra contar
+            
+            function verificarClicks() {
+                totalClicks = totalClicks + 1;  // Aumenta 1
+                
+                const valclicksJs = document.getElementById("valclicks");
+                valclicksJs.textContent = totalClicks;  // Atualiza na tela com o texto
+            }
+        </script>
+    </div>
+</body>
+</html>

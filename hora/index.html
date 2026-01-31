@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Hora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: inline-block;
+            max-width: 400px;
+        }
+        
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+            margin: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            min-height: 30px;
+            border-radius: 5px;
+        }
+        
+        .bom-dia {
+            background-color: #f1c40f;
+            color: #000;
+        }
+        
+        .boa-tarde {
+            background-color: #e67e22;
+            color: white;
+        }
+        
+        .boa-noite {
+            background-color: #2c3e50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🕐 Verificador de Hora</h1>
+        <p>Digite a hora atual (0 a 23):</p>
+        
+        <input type="number" id="horaInput" 
+               min="0" max="23" 
+               placeholder="Ex: 14">
+        
+        <br>
+        <button onclick="verificarHora()">Verificar</button>
+        
+        <div id="resultado"></div>
+        
+        <p style="margin-top: 30px; font-size: 14px; color: #666;">
+            ⏰ Regras:<br>
+            • 05:00 às 11:59 → Bom dia<br>
+            • 12:00 às 17:59 → Boa tarde<br>
+            • 18:00 às 04:59 → Boa noite
+        </p>
+    </div>
+
+    <script>
+        // Função principal que verifica a hora
+        function verificarHora() {
+            // Pega o valor do input que e 0 a 23
+            const inputElement = document.getElementById("horaInput");
+            const horaDigitada = parseInt(inputElement.value);
+            const resultadoElement = document.getElementById("resultado");
+            
+            // Verifica se é um número válido
+            if (isNaN(horaDigitada) || horaDigitada < 0 || horaDigitada > 23) {
+                resultadoElement.textContent = "❌ Digite uma hora válida (0 a 23)";
+                resultadoElement.className = "";
+                return;
+            }
+            
+            // Limpa classes anteriores
+            resultadoElement.className = "";
+            
+            // Verifica a faixa de horário
+            let saudacao = "";
+            
+            if (horaDigitada >= 5 && horaDigitada < 12) {
+                saudacao = "☀️ Bom dia!";
+                resultadoElement.classList.add("bom-dia");
+            } 
+            else if (horaDigitada >= 12 && horaDigitada < 18) {
+                saudacao = "🌤️ Boa tarde!";
+                resultadoElement.classList.add("boa-tarde");
+            } 
+            else {
+                saudacao = "🌙 Boa noite!";
+                resultadoElement.classList.add("boa-noite");
+            }
+            
+            // Mostra o resultado com a hora formatada
+            resultadoElement.textContent = `${saudacao} (Hora: ${horaDigitada}:00)`;
+        }
+        
+        // Permitir apertar Enter no input
+        document.getElementById("horaInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                verificarHora();
+            }
+        });
+        
+        // Focar no input automaticamente
+        document.getElementById("horaInput").focus();
+    </script>
+    <!-- aprender getElementById , 
+</body>
+</html>
