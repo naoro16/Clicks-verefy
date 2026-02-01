@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<input type="text" id="input1">
+		<button onclick="inputbutton()">enviar</button>
+		<p id="resultado">seu peso</p>
+	</div>
+	<div>
+		<input type="text" id="input2">
+		<button onclick="inputbutton2()">button</button>
+	 <p id="pidade">sua idade</p>
+	</div>
+	<script>
+		function inputbutton(){
+      let peso = Number(document.getElementById('input1').value);
+      let resultado = document.getElementById('resultado');
+      if (peso > 200) {
+        resultado.innerHTML = "Acima do peso";
+      } else {
+        resultado.innerHTML = "Peso: " + peso;
+    }
+}
+		function inputbutton2(){
+  let idade = Number(document.getElementById('input2').value);
+  let pidade = document.getElementById('pidade');
+  if (idade >= 18) {
+    pidade.innerHTML = "adulto";
+  }
+}
+    </script>
+</body>
+</html>
+
