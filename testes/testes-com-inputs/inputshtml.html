@@ -1,0 +1,95 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        /* ESTILOS CSS */
+        #input1 {
+            padding: 15px;
+            font-size: 18px;
+            width: 90%;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        #msg {
+            padding: 10px;
+            margin: 10px;
+            font-weight: bold;
+            min-height: 25px;
+            color: #333;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="input1" placeholder="Digite 'ola'">
+        <p id="msg">MENSAGEM</p>
+        <button onclick="button1()">Enviar</button>
+    </div>
+
+    <script>
+        // Elementos
+        let input = document.getElementById('input1');
+        let msg = document.getElementById('msg');
+        
+        // 1. Quando clicar no input (para celular)
+        input.addEventListener('click', function(){
+            this.style.backgroundColor = 'yellow';
+            this.style.borderColor = 'orange';
+            msg.textContent = "Input ativo (amarelo)";
+        });
+        
+        // 2. Quando perder o foco (clicar fora)
+        input.addEventListener('blur', function(){
+            this.style.backgroundColor = 'white';
+            this.style.borderColor = '#ccc';
+            msg.textContent = "Input inativo (branco)";
+        });
+        
+        // 3. Função do botão - SUA VERSÃO CORRIGIDA
+        function button1(){
+            let input1 = document.getElementById('input1').value;
+            
+            switch(input1){
+                case "ola": 
+                    msg.textContent = "Boa! Você digitou 'ola'";
+                    msg.style.color = "green";
+                    input.style.backgroundColor = 'lightgreen';
+                    break;
+                default:
+                    msg.textContent = 'Digite "ola" (com aspas)';
+                    msg.style.color = "red";
+                    input.style.backgroundColor = 'pink';
+                    input.focus();
+            }
+        }
+    </script>
+</body>
+</html>
